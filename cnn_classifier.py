@@ -24,6 +24,7 @@ for label in y_data:
     ohe_list[label[0]] = 1
     y_data_ohe.append(ohe_list)
 y_data_ohe = np.array(y_data_ohe)
+
 seed = 666
 X_train, X_val_test, Y_train, Y_val_test = model_selection.train_test_split(x_data, y_data_ohe, test_size= 0.2, shuffle=True, random_state = seed)
 X_val, X_test, Y_val, Y_test = model_selection.train_test_split(X_val_test, Y_val_test, test_size = 0.5, shuffle=True, random_state=seed)
