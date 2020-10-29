@@ -52,6 +52,7 @@ class svm_test:
         pass
     def get_best_model(self, X_train, Y_train, X_val, Y_val):
         pca = PCA(n_components=12)
+        degrees = range(1,8)
         acc_train = []
         acc_val = []
         best_acc = 0
@@ -129,9 +130,9 @@ class test_pipeline:
         svm_test = svm_test(X_train,Y_train,X_val,Y_val)
         cnn_test = cnn_test(X_train,Y_train,X_val,Y_val)
 
-        knn_tupel = knn_test.get_best_model
-        svm_tupel = svm_test.get_best_model
-        cnn_tupel = cnn_test.get_best_model
+        knn_tupel = knn_test.get_best_model(X_train, Y_train, X_val, Y_val)
+        svm_tupel = svm_test.get_best_model(X_train, Y_train, X_val, Y_val)
+        cnn_tupel = cnn_test.get_best_model(X_train, Y_train, X_val, Y_val)
 
         accuracies = [knn_tupel[0], svm_tupel[0], cnn_tupel[0]]
         models = [knn_tupel[1], svm_tupel[1], cnn_tupel[1]]
