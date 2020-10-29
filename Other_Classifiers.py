@@ -47,6 +47,8 @@ class knn_test:
         return (acc_max, best_model)
 
 
+
+
 class svm_test:
     def _init(self):
         pass
@@ -82,6 +84,9 @@ class svm_test:
         #best without scaling is k = 3: val_acc = 0.94357
         #best with scaling: k = 3: val_acc = 0.927714
         return (best_acc, best_model)
+
+
+
 
 
 class test_pipeline:
