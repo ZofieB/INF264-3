@@ -115,9 +115,7 @@ class cnn_test:
 
   def get_best_model(self, X_train, Y_train, X_val, Y_val):
     X_train_pp, Y_train_pp = self.preprocess_data(X_train, Y_train)
-    print(np.shape(X_train_pp), np.shape(Y_train_pp))
     X_val_pp, Y_val_pp = self.preprocess_data(X_val, Y_val)
-    print(np.shape(X_val_pp), np.shape(Y_val_pp))
     val_acc, val_loss = self.train_cnn(X_train_pp, Y_train_pp, X_val_pp, Y_val_pp)
     lr, epoch = self.choose_model(val_acc, val_loss)
 
@@ -153,7 +151,7 @@ class cnn_test:
         plt.ylim(0,1)
         plt.plot(degrees, acc_train, label="acc_train")
         plt.plot(degrees, acc_val, label="acc_val")
-        plt.title("Accuracies") 
+        plt.title("Accuracies K-NN") 
         plt.xlabel("Number of Neighbors")
         plt.legend()
 
@@ -192,7 +190,7 @@ class svm_test:
         plt.ylim(0,1)
         plt.plot(degrees, acc_train, label="acc_train")
         plt.plot(degrees, acc_val, label="acc_val")
-        plt.title("Accuracies")
+        plt.title("Accuracies SVM")
         plt.xlabel("degree")
         plt.legend()
 
@@ -216,8 +214,8 @@ class test_pipeline:
         tf.random.set_seed(1234)
 
         #Get Data
-        X = pd.read_csv('/content/drive/My Drive/handwritten_digits_images.csv', header = None).to_numpy()
-        Y = pd.read_csv('/content/drive/My Drive/handwritten_digits_labels.csv', header = None).to_numpy()
+        X = pd.read_csv('handwritten_digits_images.csv', header = None).to_numpy()
+        Y = pd.read_csv('handwritten_digits_labels.csv', header = None).to_numpy()
 
         #Train-test-split
         seed = 414
@@ -281,11 +279,8 @@ class test_pipeline:
         #Special Case: Need to specially preprocess if model is cnn
         if (i==2):
             Y_test_predict = best_model.predict_classes(cnn_test_.preprocess_data(X_test,Y_test)[0])
-            print(Y_test_predict)
         else:
             Y_test_predict = best_model.predict(X_test)
-            print(Y_test_predict)
-        print(str(Y_test_predict))
         test_acc = accuracy_score(Y_test_predict, Y_test)
 
         print("The testing-accuracy is "+str(test_acc))

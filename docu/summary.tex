@@ -1,0 +1,26 @@
+\documentclass[12pt,a4paper]{scrartcl}		% KOMA-Klassen benutzen!
+
+\usepackage[utf8]{inputenc}			% Zeichensatzkodierung
+
+
+\newcommand\svthema{INF264 Project 3}
+\newcommand\svperson{Sophie Blum and Benjamin Friedl}
+\newcommand\svdatum{30.10.2020}
+\newcommand\lvname{Digit recognizer - Summary}
+\begin{document}
+
+\title{ \svthema}
+\author{\textsc{\lvname}}
+\date{ \small \textsl{\svperson} --- \svdatum }
+\maketitle
+
+In this project, we computed different machine learning solutions to classify handwritten 
+digits based on a given dataset. This included pre-processing the data as well as training 
+different kinds of models with different values for chosen hyper-parameters. Whilst we also 
+tested a K-Nearest-Neighbour-Classifier and a Support-Vector-Machine-Classifier, the best 
+results were produced by a Convolutional Neural Network. With an accuracy of 98.09\% 
+on an unseen test-dataset, this turned out to be a viable approach for this task. The 
+expected perfomance in real life is expected to be smaller, but in a similar range, as the 
+perfomance on the test data is usually an overestimation of the model as well.
+
+\end{document}
